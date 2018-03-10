@@ -26,7 +26,7 @@ SECRET_KEY = '1%1h@hd6+0c$ksknhls7_m(=y@&835c$_)15a6#v^mfnfk-q&7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["cloudintel.herokuapp.com"]
 
 
 # Application definition
