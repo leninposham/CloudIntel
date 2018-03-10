@@ -1,0 +1,4 @@
+class {{ class_name }}:
+    {% for line in lines %}
+    {{ line }}
+    {% endfor %}

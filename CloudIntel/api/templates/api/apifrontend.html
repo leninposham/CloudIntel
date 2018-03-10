@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <title>
+            Data science model API User Interface
+        </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script type="text/javascript">
+            
+            function randomNumRange(min, max){
+                return  min + Math.ceil((max-min)*Math.random())
+            }
+            
+            function selectIdValue(ID){
+                ele = document.getElementById(ID)
+                return ele.value
+            }
+
+            function setIdValue(ID,value){
+                ele = document.getElementById(ID);
+                ele.value = value;
+            }
+            
+            window.onload=function(){
+                // setting default values for independent values
+
+                setIdValue("param1",randomNumRange(1,5));
+                setIdValue("param2",randomNumRange(1,5));
+                setIdValue("param3",randomNumRange(1,5));
+                setIdValue("param4",randomNumRange(1,5));
+                
+                btn = document.getElementById("btn");
+                btn.addEventListener("click", function(){
+                    alert("clicked");
+
+                    $("form").submit(function() {
+                    $.ajax({
+                        url: 'API/UI',
+                        data: {selected_folders: formData,
+                            csrfmiddlewaretoken: $("[name = csrfmiddlewaretoken]")},
+                            dataType: "json",
+                            type: "POST",
+                            success:function(data) {
+                                True 
+                            }
+                        });
+                    });
+                });
+            }
+
+
+
+
+        </script>
+    </head>
+    <body>
+        <header class="navbar"></header>
+        <main>
+            <div class="container">
+                <div class="row">
+                        <div class="mx-auto col-md-6 p-4">
+                                <div class="row">
+
+                                    <h5>Input independent variables to invoke Model</h5>
+                                    <p>A simple classifier is trained on iris dataset and loaded into memory by un-pickling the trained model.
+                                        Input <strong>integer</strong> or <strong>decimal</strong> value to invoke results from 
+                                        statistical model
+                                    </p>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-6"><span>Param 1</span><input type="text" name="param1" id="param1" pattern="\d*" maxlength="2"/></div>
+                                    <div class="col-md-6"><span>Param 2</span><input type="text" name="param2" id="param2"  pattern="\d*" maxlength="2"/></div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-6"><span>Param 3<span><input type="text" name="param3" id="param3" pattern="\d*" maxlength="2"/></div>
+                                    <div class="col-md-6"><span>Param 4</span><input type="text" name="param4" id="param4"  pattern="\d*" maxlength="2"/></div>
+                                </div>
+                                <div>
+                                        <input type="button" name="btn" id="btn" value="predict" /> <span> <-- click to generate results below</span>
+                                </div>
+                                
+                        </div>
+                        <div class="mx-auto col-md-6 p-4">
+                                <h5>Callback function </h5>
+                                <p> callback function is invoked after the model returns prediction outcomes.
+                                    This callback function is used for performing post-processing manipulation on prediction outcomes.
+                                </p>
+                                <p>
+                                    <strong>Note :</strong>
+                                    function should have <strong>self</strong> as its first parameter. Second parameter holds the prediction outcome throughout the 
+                                    scope of the function and second variable can named anything but python reserved keywords.
+                                </p>
+                                <textarea class="col-md-12" id="callback" style="height:200px;"></textarea>
+                        </div>
+                </div>
+            </div>
+            <div class="container mt-4 p-2">
+                <div class="row">
+                    <div class="mx-auto col-md-6">
+                        <h5> Results without callback function applied </h5>
+                        <br/>
+                        <br/>
+                        <iframe id="nonCallback" class="col-md-12"></iframe>
+                    </div>
+                    <div class="mx-auto col-md-6">
+                        <h5> Results with callback function applied </h5>
+                        <br/>
+                        <br/>
+                        <iframe id="nonCallback" class="col-md-12"></iframe>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
