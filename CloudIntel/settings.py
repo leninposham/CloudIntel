@@ -14,7 +14,10 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CALLBACK_FUNCTION_DIR = os.path.join(BASE_DIR,"CloudIntel/callback_repo/")
+PROJECT_DIR = os.path.join(BASE_DIR,"CloudIntel")
+CALLBACK_FUNCTION_DIR = os.path.join(PROJECT_DIR,"callback_repo")
+CALLBACK_TEMPLATE_DIR = os.path.join(CALLBACK_FUNCTION_DIR,"templates")
+MODELS_DIR = os.path.join(PROJECT_DIR,"statmodels")
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,7 +29,7 @@ SECRET_KEY = '1%1h@hd6+0c$ksknhls7_m(=y@&835c$_)15a6#v^mfnfk-q&7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["cloudintel.herokuapp.com"]
+ALLOWED_HOSTS = ["cloudintel.herokuapp.com",'127.0.0.1:8000','127.0.0.1']
 
 
 # Application definition
@@ -39,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'CloudIntel.api',
+    'CloudIntel.callback_repo',
 ]
 
 MIDDLEWARE = [

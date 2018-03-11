@@ -32,11 +32,20 @@
                 btn.addEventListener("click", function(){
                     alert("clicked");
 
+                    param1=selectIdValue("param1");
+                    param2=selectIdValue("param2");
+                    param3=selectIdValue("param3");
+                    param4=selectIdValue("param4");
+                    
+                    document.getElementById("nonCallback").src ="/withoutcallback/?param1="+param1+"&param2="+param2+"&param3="+param3+"&param4="+param4
+                    document.getElementById("withCallback").src ="/withcallback/?param1="+param1+"&param2="+param2+"&param3="+param3+"&param4="+param4
+
+                    /*
                     $("form").submit(function() {
                     $.ajax({
-                        url: 'API/UI',
+                        url: 'invokemodel/',
                         data: {selected_folders: formData,
-                            csrfmiddlewaretoken: $("[name = csrfmiddlewaretoken]")},
+                            csrfmiddlewaretoken: '{{ csrf_token }}'},
                             dataType: "json",
                             type: "POST",
                             success:function(data) {
@@ -44,6 +53,7 @@
                             }
                         });
                     });
+                    */
                 });
             }
 
@@ -89,7 +99,7 @@
                                     function should have <strong>self</strong> as its first parameter. Second parameter holds the prediction outcome throughout the 
                                     scope of the function and second variable can named anything but python reserved keywords.
                                 </p>
-                                <textarea class="col-md-12" id="callback" style="height:200px;"></textarea>
+                                <textarea class="col-md-12" id="callback" name="callback" style="height:200px;">{{ textcontent }}</textarea>
                         </div>
                 </div>
             </div>
@@ -105,7 +115,7 @@
                         <h5> Results with callback function applied </h5>
                         <br/>
                         <br/>
-                        <iframe id="nonCallback" class="col-md-12"></iframe>
+                        <iframe id="withCallback" class="col-md-12"></iframe>
                     </div>
                 </div>
             </div>

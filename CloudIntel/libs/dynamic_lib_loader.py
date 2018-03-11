@@ -3,7 +3,7 @@ import importlib
 
  # declaring class for handling dynamic module imports
 
-class lin_loader():
+class lib_loader():
     def __init__(self, module_name,class_name):
         """
          Tries importing the module based on the full path value
