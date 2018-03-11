@@ -10,7 +10,7 @@ from CloudIntel.libs.dynamic_lib_loader import lib_loader
 # Create your views here.
 def API_UI(request):
     textcont ="""
-def  test(self, result):
+def  testmethod(self, result):
     if result[0]==0:
         name = 'Iris Setosa'
     elif result[0]==1: 
@@ -87,11 +87,19 @@ def API_Call_With_Callback(request):
     return render(request, 'api/apiresponse.html',{"data":"sample"})
 
 
-def Save_callback():
-    pass
-
-
 def Without_Callback(request):
     print(request.GET)
+
+    return render(request, 'api/apiresponse.html',{"data":"hello"})
+
+def Save_Callback(request):
+    print(request.GET)
+
+    print(request.POST)
+    print(request.POST.get("callback"))
+    print(type(request.POST.get("callback")))
+
+    csaver = CallBackSaver(request.POST.get("callback"),request)
+    csaver.save("test.py")
 
     return render(request, 'api/apiresponse.html',{"data":"hello"})

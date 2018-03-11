@@ -1,7 +1,7 @@
 db.sqlite3
 .vscode/*
 CloudIntel/__pycache__/*
-api/__pycache__/*
-libs/__pycache__/*
-callback_repo/__pycache__/*
-statmodels/__pycache__/*
+CloudIntel/api/__pycache__/*
+CloudIntel/libs/__pycache__/*
+CloudIntel/callback_repo/__pycache__/*
+CloudIntel/statmodels/__pycache__/*

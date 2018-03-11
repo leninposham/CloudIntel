@@ -4,6 +4,7 @@
             Data science model API User Interface
         </title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
         <script type="text/javascript">
             
             function randomNumRange(min, max){
@@ -41,18 +42,18 @@
                     document.getElementById("withCallback").src ="/withcallback/?param1="+param1+"&param2="+param2+"&param3="+param3+"&param4="+param4
 
                     /*
-                    $("form").submit(function() {
                     $.ajax({
-                        url: 'invokemodel/',
-                        data: {selected_folders: formData,
-                            csrfmiddlewaretoken: '{{ csrf_token }}'},
+                        url: 'savecallback/',
+                        data: {callback: document.getElementById("callback").value,  csrfmiddlewaretoken: '{{ csrf_token }}'},
                             dataType: "json",
                             type: "POST",
                             success:function(data) {
-                                True 
+                                console.log(data) 
+                            },
+                            error:function(e){
+                                console.log("error occured")
                             }
                         });
-                    });
                     */
                 });
             }
