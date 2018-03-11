@@ -5,7 +5,7 @@ class sample:
             name = 'Iris Setosa'
         elif result[0]==1: 
             name = 'Iris Versicolour '
-        else result[0]==2:
+        else:
             name = 'Iris Virginica'
         
         return {"name":name,"outcome":result[0]}
